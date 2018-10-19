@@ -31,7 +31,7 @@ exports.getOne = (req, res) => {
 
 exports.edit = (req, res) => {
     var title = req.body.title;
-    Quiz.findOneAndUpdate({title: title},{ $set {questions: questions, answers: answers}}).then(Quiz => {
+    Quiz.findOneAndUpdate({title: title},{questions: questions, answers: answers}).then(Quiz => {
         if(!Quiz) {
             return res.status(404).send({message: "No Quiz"});
         }

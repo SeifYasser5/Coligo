@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var quiz = require('./quiz_model.js');
-var teacher = require('./teacher_model.js');
-var student = require('./student_model.js');
+var quiz = require('./quiz_controller.js');
+var teacher = require('./teacher_controller.js');
+var student = require('./student_controller.js');
 
 router.post('/createQuiz', quiz.create);
 router.get('/getAllQuiz', quiz.getAll);

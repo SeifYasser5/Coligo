@@ -1,18 +1,20 @@
-const http = require('http');
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const router = require('./router.js');
-const app = express();
-const port = 3000;
+var http = require('http');
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser')
+var router = require('./router.js');
+var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', router);
+app.use('/api', router);
 app.get('/', function (req, res) {
-  res.render('./src/index', {});
+    res.send('Hello');
 });
 
-mongoose.connect('mongodb://localhost/Coligo');
+mongoose.connect('mongodb://localhost/Coligo').then(
+	() => {console.log("Successfully connected to the database");}
+	).catch(err => {console.log('Could not connect to the database. Exiting now...');
+	process.exit();});
 
-app.listen(port, () => console.log('Server running at http://127.0.0.1:3000'));
+app.listen(3000, () => console.log('Server running at localhost:3000'));

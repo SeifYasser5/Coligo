@@ -11,10 +11,9 @@ exports.create = (req, res) => {
 exports.getOne = (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
-    
-    Teacher.findOne({username: username, password: password},{}).then(Teacher => {
+    Teacher.findOne({username: username, password: password}).then(Teacher => {
         if(!Teacher) {
-            return res.status(404).send({message: "Wrong credentials"});
+            return res.status(404).send({message: req.body.username});
         }
         res.send(Teacher);})
         .catch(err => {return res.status(500).send({message: "Error retrieving profile"});});

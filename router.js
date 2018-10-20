@@ -10,7 +10,7 @@ router.get('/getOneQuiz/:title', quiz.getOne);
 router.put('/editQuiz', quiz.edit);
 router.post('/createTeacher', teacher.create);
 router.post('/createStudent', student.create);
-router.get('/getOneTeacher', teacher.getOne);
-router.get('/getOneStudent', student.getOne);
+router.get('/getOneTeacher/:username&:password', teacher.getOne);
+router.get('/getOneStudent/:username/:password', student.getOne);
 
 module.exports = router;

@@ -1,0 +1,21 @@
+<div>Title: <input type="text"></div>
+<div>Question Type: 
+    <select (change)="number($event)">
+      <option value="0">MCQ (1 answer)</option>
+      <option value="1">MCQ (1+ answers)</option>
+      <option value="2">Short text</option>
+      <option value="3">Numeric</option>
+    </select>
+    <p hidden={{v1}}>Number of choices</p>
+    <input type={{v2}}>
+</div>
+<div>Question <input type="text"></div>
+<div>Answer <input type="text"></div>
+<div ng-repeat="i in getNumber(choices)"><input type="text"></div>
+<div><a ng-click="getQuizzes()">Edit previous quizzes</a></div>
+<div ng-repeat="quiz in quizzes"><a ng-click="EditQuiz()">{{}</a></div>
+<div ng-model="editQuiz">Title: {{}</div>
+<div ng-repeat="question in questions">{{question}}<button ng-click="edit(question)">Edit</button>
+	<button ng-click="delete(question)">Delete</button></div>
+<div ng-repeat="answer in answers">{{answer}}<button ng-click="edit(answer)">Edit</button></div>
+<router-outlet></router-outlet>

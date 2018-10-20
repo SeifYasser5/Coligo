@@ -1,0 +1,11 @@
+<div><a routerLink="Home">Back</a></div>
+<div>Username: <input type="text" name="username" ng-model="username"></div>
+<div>Password: <input type="password" name="password" ng-model="password1"></div>
+<div>Confrim Password: <input type="password" name="password" ng-model="password2"></div>
+<div>Type: 
+    <select name="Type" ng-model="type">
+      <option value="teacher">Teacher</option>
+      <option value="student">Student</option>
+    </select>
+</div>
+<router-outlet><router-outlet>

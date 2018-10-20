@@ -1,11 +1,8 @@
 var Student = require('./student_model.js');
 
 exports.create = (req, res) => {
-    var Student = new Student({
-        username: req.body.username,
-        password: req.body.password
-        });
-    Student.save().then(data => {res.send(data);}).catch(err => {res.send(err.message);});
+    var S = new Student({username: req.body.username, password: req.body.password});
+    S.save().then(data => {res.send(data);}).catch(err => {res.send(err.message);});
 };
 
 exports.getOne = (req, res) => {

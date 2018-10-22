@@ -1,16 +1,14 @@
 var http = require('http');
 var express = require('express');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var router = require('./router.js');
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', router);
-app.get('/', function (req, res) {
-    res.send('Hello');
-});
+app.get('/', (req, res) => res.send("Hey"));
 
 mongoose.connect('mongodb://localhost/Coligo').then(
 	() => {console.log("Successfully connected to the database");}

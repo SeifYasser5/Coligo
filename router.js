@@ -6,11 +6,11 @@ var student = require('./student_controller.js');
 
 router.post('/createQuiz', quiz.create);
 router.get('/getAllQuiz', quiz.getAll);
-router.get('/getOneQuiz/:title', quiz.getOne);
+router.get('/getOneQuiz/', quiz.getOne);
 router.put('/editQuiz', quiz.edit);
 router.post('/createTeacher', teacher.create);
 router.post('/createStudent', student.create);
-router.get('/getOneTeacher/:username', teacher.getOne);
-router.get('/getOneStudent/:username&:password', student.getOne);
+router.get('/getOneTeacher', teacher.getOne);
+router.get('/getOneStudent', student.getOne);
 
 module.exports = router;

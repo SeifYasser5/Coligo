@@ -6,8 +6,8 @@ exports.create = (req, res) => {
 };
 
 exports.getOne = (req, res) => {
-	var username = req.body.username;
-    var password = req.body.password;
+	var username = req.query.username;
+    var password = req.query.password;
     Student.findOne({username: username, password: password},{}).then(Student => {
         if(!Student) {
             return res.status(404).send({message: "Wrong Credentials"});

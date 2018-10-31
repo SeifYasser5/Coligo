@@ -1,11 +1,13 @@
-<div><a routerLink="Home">Back</a></div>
-<div>Username: <input type="text" name="username" ng-model="username"></div>
-<div>Password: <input type="password" name="password" ng-model="password1"></div>
-<div>Confrim Password: <input type="password" name="password" ng-model="password2"></div>
+<div><a routerLink="../">Back</a></div>
+<form #userForm="ngForm" (ngSubmit)="Register()">
+<div>Username: <input type="text" [(ngModel)]="username" name="username"></div>
+<div>Password: <input type="password" [(ngModel)]="password1" name="password1"></div>
+<div>Confrim Password: <input type="password" [(ngModel)]="password2" name="password2"></div>
 <div>Type: 
-    <select name="Type" ng-model="type">
+    <select [(ngModel)]="type" name="type">
       <option value="teacher">Teacher</option>
       <option value="student">Student</option>
     </select>
 </div>
+<div><button type="submit">Submit</button></div>
 <router-outlet><router-outlet>

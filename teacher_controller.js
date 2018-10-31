@@ -1,7 +1,7 @@
 var Teacher = require('./teacher_model.js');
 
 exports.create = (req, res) => {
-    var T = new Teacher({username: req.query.username, password: req.query.password});
+    var T = new Teacher({username: req.body.username, password: req.body.password});
     T.save().then(data => {res.send(data);}).catch(err => {res.send(err.message);});
 };
 

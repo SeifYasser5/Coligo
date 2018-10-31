@@ -1,10 +1,12 @@
-<div><a routerLink="Home">Back</a></div>
-<div>Username: <input type="text" name="username" ng-model="username"></div>
-<div>Password: <input type="password" name="password" ng-model="password1"></div>
+<div><a routerLink="../">Back</a></div>
+<form #logForm="ngForm" (ngSubmit)="Log()">
+<div>Username: <input type="text" name="usernamey" [(ngModel)]="usernamey"></div>
+<div>Password: <input type="password" name="passwordy" [(ngModel)]="passwordy"></div>
 <div>Type: 
-    <select name="Type" ng-model="type">
+    <select name="typey" [(ngModel)]="typey">
       <option value="teacher">Teacher</option>
       <option value="student">Student</option>
     </select>
 </div>
+<div><button type="submit">Log In</button></div>
 <router-outlet><router-outlet>

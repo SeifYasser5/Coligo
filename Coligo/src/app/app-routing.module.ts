@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'SignIn',
     component: SignInComponent
   }, {
-  	path: 'Home',
+  	path: '',
   	component: AppComponent
   }
 ];

@@ -1,13 +1,12 @@
 var Quiz = require('./quiz_model.js');
 
 exports.create = (req, res) => {
-    var Quiz = new Quiz({
+    var Q = new Quiz({
         title: req.body.title,
-        author: req.body.author,
         questions: req.body.questions,
-        answers: req.body.questions,
+        answers: req.body.answers
     });
-    Quiz.save().then(data => {res.send(data);}).catch(err => {res.send(err.message);});
+    Q.save().then(data => {res.send(data);}).catch(err => {res.send(err.message);});
 };
 
 exports.getAll = (req, res) => {

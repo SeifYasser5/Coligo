@@ -1,21 +1,44 @@
-<div>Title: <input type="text"></div>
+<form #quizForm="ngForm" (ngSubmit)="Create()">
+<div>Title: <input type="text" name="title" [(ngModel)]="title"></div>
 <div>Question Type: 
-    <select (change)="number($event)">
+    <select single name="typeq" [(ngModel)]="typeq" (change)="number()">
       <option value="0">MCQ (1 answer)</option>
       <option value="1">MCQ (1+ answers)</option>
       <option value="2">Short text</option>
       <option value="3">Numeric</option>
     </select>
-    <p hidden={{v1}}>Number of choices</p>
-    <input type={{v2}}>
 </div>
-<div>Question <input type="text"></div>
-<div>Answer <input type="text"></div>
-<div ng-repeat="i in getNumber(choices)"><input type="text"></div>
-<div><a ng-click="getQuizzes()">Edit previous quizzes</a></div>
-<div ng-repeat="quiz in quizzes"><a ng-click="EditQuiz()">{{}</a></div>
-<div ng-model="editQuiz">Title: {{}</div>
-<div ng-repeat="question in questions">{{question}}<button ng-click="edit(question)">Edit</button>
-	<button ng-click="delete(question)">Delete</button></div>
-<div ng-repeat="answer in answers">{{answer}}<button ng-click="edit(answer)">Edit</button></div>
+<div>Question <input type="text" name="question" [(ngModel)]="question"></div>
+<div *ngIf="v2">Answer <input type="text" name="answer" [(ngModel)]="answer"></div>
+<input *ngIf="v1" type="text" name="choice" [(ngModel)]="choice">
+<button *ngIf="v1" type="button" (click)="addChoice()">Add Choice</button>
+<div *ngIf="v1" >Choices
+	<select  single  name="answerss" [(ngModel)]="answerss" (change)="addCChoice()">
+		<option *ngFor="let i of choices">{{i}}</option>
+	</select>
+  Correct Choice(s)
+  <select  multiple  name="Canswers" [(ngModel)]="Canswers">
+    <option *ngFor="let j of Cchoices">{{j}}</option>
+  </select>
+</div>
+<div><button type="button" (click)="addQuestion()">Save Question</button></div>
+<div *ngFor="let ques of questions; let ii=index">Question: {{ques.body}}
+  <span *ngFor="let cho of questions[ii].choices">{{cho}}-</span>
+</div>
+<div *ngFor="let ans of answers; let jj=index">Answer: {{ans.body}}>
+  <span *ngFor="let ccho of answers[jj].choices">{{ccho}}-</span>
+</div>
+<div><button type="submit">Create Quiz</button></div>
+<div><button (click)="getQuizzes()" type="button">Edit previous quizzes</button></div>
+<div ><button *ngFor="let qu of quizzes" name="qu" (click)="EditQuiz(qu)" type="button">
+  {{qu.title}}</button></div>
+<div *ngIf="v3">Title: {{editedQuiz.title}}</div>
+<div *ngFor="let quest of editedQuiz.questions; let iii=index">{{quest.body}}
+<span *ngFor="let choicee of editedQuiz.questions[iii].choices">{{choicee}}-</span>
+<button (click)="delete(quest)" type="button">Delete</button>
+</div>
+<div *ngFor="let answ of editedQuiz.answers">{{answ.body}}
+<span *ngFor="let cchoicee of editedQuiz.answers">{{cchoiee}}-</span>
+</div>
+<button *ngIf="v3" (click)="add()" type="button">Add</button>
 <router-outlet></router-outlet>
